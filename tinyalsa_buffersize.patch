@@ -1,0 +1,25 @@
+Common subdirectories: ./tinyalsa/include and ./tinyalsa_update/include
+diff -u ./tinyalsa/tinycap.c ./tinyalsa_update/tinycap.c
+--- ./tinyalsa/tinycap.c	2018-06-25 11:59:33.610238919 +0800
++++ ./tinyalsa_update/tinycap.c	2018-06-25 13:52:22.509945150 +0800
+@@ -228,7 +228,7 @@
+         return 0;
+     }
+ 
+-    size = pcm_frames_to_bytes(pcm, pcm_get_buffer_size(pcm));
++    size = pcm_get_buffer_size(pcm);
+     buffer = malloc(size);
+     if (!buffer) {
+         fprintf(stderr, "Unable to allocate %u bytes\n", size);
+diff -u ./tinyalsa/tinyplay.c ./tinyalsa_update/tinyplay.c
+--- ./tinyalsa/tinyplay.c	2018-06-25 11:59:33.610238919 +0800
++++ ./tinyalsa_update/tinyplay.c	2018-06-25 13:52:48.670201548 +0800
+@@ -273,7 +273,7 @@
+         return;
+     }
+ 
+-    size = pcm_frames_to_bytes(pcm, pcm_get_buffer_size(pcm));
++    size = pcm_get_buffer_size(pcm);
+     buffer = malloc(size);
+     if (!buffer) {
+         fprintf(stderr, "Unable to allocate %d bytes\n", size);
